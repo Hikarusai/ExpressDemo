@@ -1,0 +1,15 @@
+extends ./header
+block content
+  .container
+    h1.mt-5 Login
+    if errors
+      each err in errors
+        .alert.alert-danger=err
+    form.mt-5( method="POST")
+      .form-group
+        label(for='name') Email
+        input#name.form-control(type='text', placeholder='Email', name='email',value=values?values.email:'')
+      .form-group
+        label(for='phone') Passwork
+        input#phone.form-control(type='passwork', placeholder='Passwork', name='passwork',value=values?values.passwork:'')
+      button.btn.btn-primary Login

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Users</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <% include header%>
+    <div class="container pt-5">
+        <h1>Users</h1>
+    <a href="/create" class="btn btn-primary">New Create</a>
+        
+    <form action="/user/search" method="GET" class="pt-5 d-flex">
+       <input type="text" class="form-control" name="q" placeholder="Search">
+       <button type="submit" class="btn btn-primary">Search</button>
+
+    </form>
+
+    <table class="table mt-2">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% users.forEach(function(user){ %>
+      <tr>
+          <td><%-user.name%></td>
+          <td><%-user.phone%></td>
+          <td ><a href="/user/<%-user.id%>" class="btn btn-primary">View</a></td>
+      </tr>
+       <% }); %>
+       
+  </tbody>
+</table>
+   
+    </div>
+    
+</body>
+</html>

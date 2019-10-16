@@ -1,0 +1,21 @@
+extends ./header
+block content
+  .container.pt-5
+    h1 Users
+    a.btn.btn-primary(href='/create') New Create
+    form.pt-5.d-flex(action='/user/search', method='GET')
+      input.form-control(type='text', name='q', placeholder='Search')
+      button.btn.btn-primary(type='submit') Search
+    table.table.mt-2
+      thead.thead-dark
+        tr
+          th(scope='col') Name
+          th(scope='col') Phone
+          th(scope='col') Action
+      tbody
+        each user in users
+            tr
+                td=user.name
+                td=user.phone
+                td
+                    a(href='/user/'+user.id).btn.btn-primary View

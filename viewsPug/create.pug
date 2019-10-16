@@ -1,0 +1,15 @@
+extends ./header
+block content
+  .container
+    h1.mt-5 Create User
+    if errors
+      each err in errors
+        .alert.alert-danger=err
+    form.mt-5(action="/create", method="POST")
+      .form-group
+        label(for='name') Name
+        input#name.form-control(type='text', placeholder='Name', name='name',value=values?values.name:'')
+      .form-group
+        label(for='phone') Phone Number
+        input#phone.form-control(type='text', placeholder='Phone', name='phone',value=values?values.phone:'')
+      button.btn.btn-primary Create
