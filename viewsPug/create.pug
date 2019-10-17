@@ -5,11 +5,14 @@ block content
     if errors
       each err in errors
         .alert.alert-danger=err
-    form.mt-5(action="/create", method="POST")
+    form.mt-5(action="/create", method="POST",enctype="multipart/form-data")
       .form-group
         label(for='name') Name
         input#name.form-control(type='text', placeholder='Name', name='name',value=values?values.name:'')
       .form-group
         label(for='phone') Phone Number
         input#phone.form-control(type='text', placeholder='Phone', name='phone',value=values?values.phone:'')
+      .form-group
+        label(for='avatar') Avatar
+        input#avatar.form-control-file(type='file',  name='avatar')
       button.btn.btn-primary Create

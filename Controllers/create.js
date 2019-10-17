@@ -6,7 +6,7 @@ module.exports.create=(rq,rs)=>{
 };
 
 module.exports.postCreate=(rq,rs)=>{
-	rq.body.id=shortid.generate();
+	
 	var errors=[];
 	if(!rq.body.name)
 	{
@@ -21,7 +21,8 @@ module.exports.postCreate=(rq,rs)=>{
 		 rs.render('create',{errors:errors,values:rq.body});
 		 return;
 	}
-	
+	rq.body.id=shortid.generate();
+	rq.body.avatar=rq.file.path.split('\\').slice(1).join('/');
 	db.get('users').push(rq.body).write();
 	rs.redirect('/user');
 };
